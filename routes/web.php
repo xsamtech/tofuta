@@ -1,31 +1,27 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+/**
+ * @author Xanders
+ * @see https://team.xsamtech.com/xanderssamoth
+ */
+
+use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
+| ROUTES FOR EVERY ROLES
+|--------------------------------------------------------------------------
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Generate symbolic link
+Route::get('/symlink', function () { return view('symlink'); })->name('generate_symlink');
+// Home
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/language/{locale}', [HomeController::class, 'changeLanguage'])->name('change_language');
+Route::get('/notifications', [HomeController::class, 'notification'])->name('notification.home');
+Route::get('/about', [HomeController::class, 'about'])->name('about.home');
+Route::get('/about/{entity}', [HomeController::class, 'aboutEntity'])->name('about.entity');
 
 require __DIR__.'/auth.php';

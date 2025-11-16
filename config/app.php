@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @author Xanders
+ * @see https://team.xsamtech.com/xanderssamoth
+ */
+
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,7 +21,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Tofuta'),
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +88,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -110,6 +115,20 @@ return [
     */
 
     'faker_locale' => 'en_US',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Available locales
+    |--------------------------------------------------------------------------
+    |
+    | All locales that application works with
+    |
+    */
+    'available_locales' => [
+        'English' => 'en',
+        'Français' => 'fr',
+        'Lingala' => 'ln'
+    ],
 
     /*
     |--------------------------------------------------------------------------
